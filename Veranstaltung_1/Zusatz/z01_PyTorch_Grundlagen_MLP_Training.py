@@ -12,13 +12,6 @@
 # ## 0. Setup
 
 # %%
-# Warum dieser Block? Colab bringt PyTorch/torchvision bereits vorinstalliert mit, exakt
-# abgestimmt auf die dort verfuegbare GPU/CUDA-Version. Ein hartes Pinnen auf eine feste
-# Versionsnummer wuerde diese vorinstallierten Pakete ueberschreiben und mit anderen bereits
-# vorhandenen Paketen (z. B. torchaudio, numba) in Versionskonflikte geraten - genau das ist
-# beim Testen aufgefallen. Deshalb werden torch/torchvision nur nachinstalliert, falls sie
-# fehlen (z. B. ausserhalb von Colab); alle uebrigen Pakete werden weiterhin fest gepinnt, um
-# reproduzierbare Ergebnisse sicherzustellen.
 try:
     import torch, torchvision
     print(f"PyTorch {torch.__version__} und torchvision {torchvision.__version__} bereits vorhanden, kein Neuinstall noetig.")
