@@ -12,7 +12,20 @@
 # ## 0. Setup
 
 # %%
-!pip install -q torch==2.14.0 torchvision==0.29.0 ipywidgets==8.1.9 scikit-learn==1.9.1 matplotlib==3.11.2 tqdm==4.70.1
+# Warum dieser Block? Colab bringt PyTorch/torchvision bereits vorinstalliert mit, exakt
+# abgestimmt auf die dort verfuegbare GPU/CUDA-Version. Ein hartes Pinnen auf eine feste
+# Versionsnummer wuerde diese vorinstallierten Pakete ueberschreiben und mit anderen bereits
+# vorhandenen Paketen (z. B. torchaudio, numba) in Versionskonflikte geraten - genau das ist
+# beim Testen aufgefallen. Deshalb werden torch/torchvision nur nachinstalliert, falls sie
+# fehlen (z. B. ausserhalb von Colab); alle uebrigen Pakete werden weiterhin fest gepinnt, um
+# reproduzierbare Ergebnisse sicherzustellen.
+try:
+    import torch, torchvision
+    print(f"PyTorch {torch.__version__} und torchvision {torchvision.__version__} bereits vorhanden, kein Neuinstall noetig.")
+except ImportError:
+    !pip install -q torch torchvision
+
+!pip install -q ipywidgets==8.1.9 scikit-learn==1.9.1 matplotlib==3.11.2 tqdm==4.70.1
 
 # %% [markdown]
 # ## 1. Tensor-Ordnung, Form und Reshaping
