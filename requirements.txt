@@ -3,6 +3,7 @@ matplotlib
 numpy
 tqdm
 ipywidgets
+scikit-learn
 
 # The PyTorch Intel XPU extension is required for running PyTorch on Intel CPUs.
 # It must be installed separately from the main PyTorch package.
